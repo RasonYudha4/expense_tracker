@@ -12,16 +12,11 @@ List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
     icon: Icon(Icons.class_),
     label: 'Class',
   ),
-  BottomNavigationBarItem(
-    icon: Icon(Icons.person),
-    label: 'Profile',
-  ),
 ];
 
 const List<Widget> bottomNavScreen = <Widget>[
   HomePage(),
   Text('Index 1: Class'),
-  Text('Index 2: Profile'),
 ];
 
 class LandingScreen extends StatelessWidget {
