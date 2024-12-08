@@ -25,7 +25,35 @@ class HomePage extends StatelessWidget {
         ),
         RecentExpenses(),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  return Dialog(
+                    backgroundColor: Colors.white,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    child: Container(
+                      height: 400,
+                      width: 110,
+                      child: Padding(
+                        padding: const EdgeInsets.all(15.0),
+                        child: Column(
+                          children: [
+                            Text("Add Expense",
+                                style: GoogleFonts.roboto(
+                                  textStyle: TextStyle(
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ))
+                          ],
+                        ),
+                      ),
+                    ),
+                  );
+                });
+          },
           child: Container(
             height: 60,
             width: 180,
@@ -53,7 +81,7 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-        )
+        ),
       ],
     ));
   }
