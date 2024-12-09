@@ -24,66 +24,152 @@ class HomePage extends StatelessWidget {
           height: 10,
         ),
         RecentExpenses(),
-        GestureDetector(
-          onTap: () {
-            showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  return Dialog(
-                    backgroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    child: Container(
-                      height: 400,
-                      width: 110,
-                      child: Padding(
-                        padding: const EdgeInsets.all(15.0),
-                        child: Column(
-                          children: [
-                            Text("Add Expense",
-                                style: GoogleFonts.roboto(
-                                  textStyle: TextStyle(
-                                    fontSize: 15,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ))
-                          ],
+        AddExpenseButton(),
+      ],
+    ));
+  }
+}
+
+class AddExpenseButton extends StatelessWidget {
+  const AddExpenseButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        showDialog(
+            context: context,
+            builder: (BuildContext context) {
+              return AddExpenseDialog();
+            });
+      },
+      child: Container(
+        height: 60,
+        width: 180,
+        decoration: BoxDecoration(
+            color: Colors.deepPurple, borderRadius: BorderRadius.circular(30)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              Icons.add_circle_outline_rounded,
+              color: Colors.white,
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            Text("Add Expense",
+                style: GoogleFonts.roboto(
+                  textStyle: TextStyle(
+                    fontSize: 15,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ))
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class AddExpenseDialog extends StatelessWidget {
+  DateTime? selectedDate;
+
+  @override
+  Widget build(BuildContext context) {
+    return Dialog(
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+      child: Container(
+        height: 400,
+        width: 110,
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: Column(
+            children: [
+              Text("Add Expense",
+                  style: GoogleFonts.roboto(
+                    textStyle: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  )),
+              SizedBox(
+                height: 20,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Column(
+                  children: [
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        hintText: 'Title',
+                        contentPadding: EdgeInsets.only(left: 10),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    TextFormField(
+                      decoration: const InputDecoration(
+                        hintText: 'Amount',
+                        contentPadding: EdgeInsets.only(left: 10),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    GestureDetector(
+                      onTap: () async {
+                        DateTime? pickedDate = await showDatePicker(
+                          context: context,
+                          initialDate: selectedDate ?? DateTime.now(),
+                          firstDate: DateTime(2000),
+                          lastDate: DateTime(2101),
+                        );
+                        if (pickedDate != null && pickedDate != selectedDate) {
+                          selectedDate = pickedDate;
+                          (context as Element)
+                              .markNeedsBuild(); // Force rebuild
+                        }
+                      },
+                      child: AbsorbPointer(
+                        child: TextFormField(
+                          decoration: InputDecoration(
+                            prefixIcon: Icon(Icons.calendar_month_outlined),
+                            hintText: selectedDate != null
+                                ? "${selectedDate!.toLocal()}".split(' ')[0]
+                                : 'Date',
+                            contentPadding: EdgeInsets.symmetric(
+                                vertical: 15, horizontal: 10),
+                          ),
                         ),
                       ),
                     ),
-                  );
-                });
-          },
-          child: Container(
-            height: 60,
-            width: 180,
-            decoration: BoxDecoration(
-                color: Colors.deepPurple,
-                borderRadius: BorderRadius.circular(30)),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.add_circle_outline_rounded,
-                  color: Colors.white,
+                    SizedBox(height: 60),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: <Widget>[
+                        TextButton(
+                          child: Text('Create'),
+                          onPressed: () {
+                            Navigator.of(context).pop();
+                          },
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text("Add Expense",
-                    style: GoogleFonts.roboto(
-                      textStyle: TextStyle(
-                        fontSize: 15,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ))
-              ],
-            ),
+              ),
+            ],
           ),
         ),
-      ],
-    ));
+      ),
+    );
   }
 }
 
@@ -455,7 +541,7 @@ class MainCard extends StatelessWidget {
                             top: -10,
                             child: Icon(
                               Icons.currency_exchange_rounded,
-                              size: 25,
+                              size: 20,
                               color: Colors.black,
                             ),
                           ),
