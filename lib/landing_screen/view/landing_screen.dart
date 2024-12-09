@@ -11,8 +11,8 @@ List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
     label: 'Home',
   ),
   BottomNavigationBarItem(
-    icon: Icon(Icons.class_),
-    label: 'Class',
+    icon: Icon(Icons.analytics_outlined),
+    label: 'Evaluation',
   ),
 ];
 

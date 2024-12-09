@@ -1,4 +1,5 @@
 import 'package:authentication_repository/authentication_repository.dart';
+import 'package:expense_tracker/home/view/profile_page.dart';
 import 'package:expense_tracker/home/widgets/avatar.dart';
 import 'package:flutter/material.dart';
 
@@ -41,7 +42,14 @@ class HomeAppBar extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        print("clicked");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute<void>(
+                            builder: (BuildContext context) {
+                              return const ProfilePage();
+                            },
+                          ),
+                        );
                       },
                       child: Avatar(
                         photo: user.photo,
