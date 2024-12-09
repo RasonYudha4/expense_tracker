@@ -1,3 +1,4 @@
+import 'package:expense_tracker/evaluation/blocs/bloc/selected_bloc.dart';
 import 'package:expense_tracker/evaluation/view/evaluation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,10 +16,19 @@ List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
   ),
 ];
 
-const List<Widget> bottomNavScreen = <Widget>[
-  HomePage(),
-  EvaluationPage(),
-];
+List<Widget> bottomNavScreen(BuildContext context) {
+  return <Widget>[
+    HomePage(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => SelectedBloc(),
+        ),
+      ],
+      child: EvaluationPage(),
+    ),
+  ];
+}
 
 class LandingScreen extends StatelessWidget {
   const LandingScreen({super.key});
@@ -31,7 +41,8 @@ class LandingScreen extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         return Scaffold(
-          body: Center(child: bottomNavScreen.elementAt(state.tabIndex)),
+          body:
+              Center(child: bottomNavScreen(context).elementAt(state.tabIndex)),
           bottomNavigationBar: BottomNavigationBar(
             items: bottomNavItems,
             currentIndex: state.tabIndex,
