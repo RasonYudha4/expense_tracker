@@ -1,4 +1,5 @@
 import 'package:expense_tracker/evaluation/blocs/bloc/selected_bloc.dart';
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -37,12 +38,65 @@ class EvaluationPage extends StatelessWidget {
                   BlocBuilder<SelectedBloc, SelectedState>(
                       builder: (context, state) {
                     return Container(
-                      height: 180,
-                      width: 350,
-                      decoration: BoxDecoration(
-                          color: Colors.red,
-                          borderRadius: BorderRadius.circular(10)),
-                    );
+                        height: 180,
+                        width: 350,
+                        decoration: BoxDecoration(
+                            // color: Colors.red,
+                            borderRadius: BorderRadius.circular(10)),
+                        child: LineChart(
+                          LineChartData(
+                            lineBarsData: [
+                              LineChartBarData(
+                                show: true,
+                                spots: const [
+                                  FlSpot(0, 0),
+                                  FlSpot(8, 5),
+                                  FlSpot(12, 10),
+                                  FlSpot(15, 20),
+                                  FlSpot(18, 14),
+                                ],
+                                color: Colors.purple,
+                                barWidth: 8,
+                                isCurved: true,
+                                belowBarData: BarAreaData(
+                                  show: true,
+                                  color: Colors.deepPurple.withOpacity(0.4),
+                                ),
+                                shadow:
+                                    Shadow(color: Colors.black, blurRadius: 2),
+                              ),
+                            ],
+                            titlesData: FlTitlesData(
+                              leftTitles: AxisTitles(
+                                sideTitles: SideTitles(
+                                    showTitles: true, reservedSize: 40),
+                              ),
+                              bottomTitles: AxisTitles(
+                                sideTitles: SideTitles(
+                                    showTitles: true, reservedSize: 40),
+                              ),
+                              topTitles: AxisTitles(
+                                sideTitles: SideTitles(showTitles: false),
+                              ),
+                              rightTitles: AxisTitles(
+                                sideTitles: SideTitles(
+                                    showTitles: false, reservedSize: 40),
+                              ),
+                            ),
+                            borderData: FlBorderData(
+                              show: true,
+                              border: Border(
+                                left: BorderSide(color: Colors.black, width: 2),
+                                bottom:
+                                    BorderSide(color: Colors.black, width: 2),
+                                right: BorderSide(
+                                    color: Colors.transparent, width: 0),
+                                top: BorderSide(
+                                    color: Colors.transparent, width: 0),
+                              ),
+                            ),
+                          ),
+                        ));
                   }),
                 ],
               ),
