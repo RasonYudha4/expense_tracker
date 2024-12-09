@@ -1,3 +1,4 @@
+import 'package:expense_tracker/evaluation/view/evaluation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:expense_tracker/home/home.dart';
@@ -16,7 +17,7 @@ List<BottomNavigationBarItem> bottomNavItems = const <BottomNavigationBarItem>[
 
 const List<Widget> bottomNavScreen = <Widget>[
   HomePage(),
-  Text('Index 1: Class'),
+  EvaluationPage(),
 ];
 
 class LandingScreen extends StatelessWidget {
