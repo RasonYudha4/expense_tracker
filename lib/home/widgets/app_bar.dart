@@ -1,6 +1,7 @@
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:expense_tracker/home/view/profile_page.dart';
 import 'package:expense_tracker/home/widgets/avatar.dart';
+import 'package:expense_tracker/notifications/view/notification.dart';
 import 'package:flutter/material.dart';
 
 class HomeAppBar extends StatelessWidget {
@@ -60,7 +61,14 @@ class HomeAppBar extends StatelessWidget {
                     ),
                     IconButton(
                         onPressed: () {
-                          print("clicked");
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute<void>(
+                              builder: (BuildContext context) {
+                                return const NotificationPage();
+                              },
+                            ),
+                          );
                         },
                         icon: Icon(
                           Icons.notifications,
