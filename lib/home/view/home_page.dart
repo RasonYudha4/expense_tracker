@@ -21,7 +21,7 @@ class HomePage extends StatelessWidget {
           height: 10,
         ),
         RecentExpenses(),
-        AddExpenseButton(),
+        // AddExpenseButton(),
       ],
     ));
   }

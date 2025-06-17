@@ -17,18 +17,35 @@ class ProfilePage extends StatelessWidget {
       backgroundColor: Color(0xFFBFBFBF),
       body: Column(
         children: [
-          Container(
-            padding: EdgeInsets.only(top: 80),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: <Widget>[
-                Avatar(photo: user.photo),
-                const SizedBox(height: 4),
-                Text(user.email ?? '', style: textTheme.titleLarge),
-                const SizedBox(height: 4),
-                Text(user.name ?? '', style: textTheme.headlineSmall),
-              ],
-            ),
+          Row(
+            children: [
+              IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: const Icon(
+                  Icons.arrow_back_ios_new_rounded,
+                  size: 28,
+                  color: Colors.black,
+                ),
+              ),
+              SizedBox(
+                width: 80,
+              ),
+              Container(
+                padding: EdgeInsets.only(top: 80),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: <Widget>[
+                    Avatar(photo: user.photo),
+                    const SizedBox(height: 4),
+                    Text(user.email ?? '', style: textTheme.titleLarge),
+                    const SizedBox(height: 4),
+                    Text(user.name ?? '', style: textTheme.headlineSmall),
+                  ],
+                ),
+              ),
+            ],
           ),
           SizedBox(
             height: 40,

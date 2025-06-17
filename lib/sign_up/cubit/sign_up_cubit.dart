@@ -1,26 +1,25 @@
-import 'package:authentication_repository/authentication_repository.dart';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:form_inputs/form_inputs.dart';
 import 'package:formz/formz.dart';
+
+import '../../data/form_inputs/auth/confirm_password.dart';
+import '../../data/form_inputs/auth/email.dart';
+import '../../data/form_inputs/auth/password.dart';
+import '../../data/repositories/auth_repo.dart';
 
 part 'sign_up_state.dart';
 
 class SignUpCubit extends Cubit<SignUpState> {
   SignUpCubit(this._authenticationRepository) : super(const SignUpState());
 
-  final AuthenticationRepository _authenticationRepository;
+  final AuthRepo _authenticationRepository;
 
   void emailChanged(String value) {
     final email = Email.dirty(value);
     emit(
       state.copyWith(
         email: email,
-        isValid: Formz.validate([
-          email,
-          state.password,
-          state.confirmedPassword,
-        ]),
+        showEmailError: false,
       ),
     );
   }
@@ -35,11 +34,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       state.copyWith(
         password: password,
         confirmedPassword: confirmedPassword,
-        isValid: Formz.validate([
-          state.email,
-          password,
-          confirmedPassword,
-        ]),
+        showPasswordError: false,
       ),
     );
   }
@@ -52,33 +47,56 @@ class SignUpCubit extends Cubit<SignUpState> {
     emit(
       state.copyWith(
         confirmedPassword: confirmedPassword,
-        isValid: Formz.validate([
-          state.email,
-          state.password,
-          confirmedPassword,
-        ]),
+        showConfirmPasswordError: false,
       ),
     );
   }
 
   Future<void> signUpFormSubmitted() async {
-    if (!state.isValid) return;
+    // Convert pure fields to dirty to trigger proper validation
+    final email =
+        state.email.isPure ? Email.dirty(state.email.value) : state.email;
+    final password = state.password.isPure
+        ? Password.dirty(state.password.value)
+        : state.password;
+    final confirmPassword = state.confirmedPassword.isPure
+        ? ConfirmedPassword.dirty(password: password.value)
+        : state.confirmedPassword;
+
+    // Update state with dirty fields if needed
+    if (state.email.isPure || state.password.isPure) {
+      emit(state.copyWith(
+          email: email,
+          password: password,
+          confirmedPassword: confirmPassword));
+    }
+
+    // First check if form is valid
+    if (!state.isValid) {
+      // Show validation errors when user clicks login with invalid data
+      emit(state.copyWith(
+          showEmailError:
+              state.email.value.isEmpty || state.email.displayError != null,
+          showPasswordError: state.password.value.isEmpty ||
+              state.password.displayError != null,
+          showConfirmPasswordError: state.confirmedPassword.value.isEmpty ||
+              state.confirmedPassword.displayError != null));
+      return;
+    }
+
     emit(state.copyWith(status: FormzSubmissionStatus.inProgress));
+
     try {
       await _authenticationRepository.signUp(
         email: state.email.value,
         password: state.password.value,
       );
       emit(state.copyWith(status: FormzSubmissionStatus.success));
-    } on SignUpWithEmailAndPasswordFailure catch (e) {
-      emit(
-        state.copyWith(
-          errorMessage: e.message,
-          status: FormzSubmissionStatus.failure,
-        ),
-      );
-    } catch (_) {
-      emit(state.copyWith(status: FormzSubmissionStatus.failure));
+    } catch (error) {
+      emit(state.copyWith(
+        status: FormzSubmissionStatus.failure,
+        errorMessage: error.toString(),
+      ));
     }
   }
 }

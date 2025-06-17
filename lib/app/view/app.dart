@@ -1,16 +1,17 @@
-import 'package:authentication_repository/authentication_repository.dart';
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:expense_tracker/app/app.dart';
 
+import '../../data/repositories/auth_repo.dart';
+
 class App extends StatelessWidget {
   const App({
-    required AuthenticationRepository authenticationRepository,
+    required AuthRepo authenticationRepository,
     super.key,
   }) : _authenticationRepository = authenticationRepository;
 
-  final AuthenticationRepository _authenticationRepository;
+  final AuthRepo _authenticationRepository;
 
   @override
   Widget build(BuildContext context) {

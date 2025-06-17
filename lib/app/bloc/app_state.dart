@@ -10,8 +10,7 @@ final class AppState extends Equatable {
       : this._(
           status: user == User.empty
               ? AppStatus.unauthenticated
-              : status ??
-                  AppStatus.authenticated, // Default page status to Home
+              : status ?? AppStatus.authenticated,
           user: user,
         );
 
