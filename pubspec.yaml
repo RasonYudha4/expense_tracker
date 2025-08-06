@@ -22,6 +22,7 @@ dependencies:
   formz: ^0.7.0
   google_fonts: ^6.2.1
   meta: ^1.15.0
+  provider: ^6.1.5
 
 dev_dependencies:
   bloc_test: ^9.0.0

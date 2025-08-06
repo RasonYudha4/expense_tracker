@@ -10,7 +10,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final user = context.select((AppBloc bloc) => bloc.state.user);
+    final user = context.select((AuthBloc bloc) => bloc.state.user);
 
     return Scaffold(
         body: Column(

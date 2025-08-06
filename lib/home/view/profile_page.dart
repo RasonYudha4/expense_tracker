@@ -1,4 +1,4 @@
-import 'package:expense_tracker/app/bloc/app_bloc.dart';
+import 'package:expense_tracker/app/bloc/auth_bloc.dart';
 import 'package:expense_tracker/home/widgets/avatar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,7 +11,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final textTheme = Theme.of(context).textTheme;
-    final user = context.select((AppBloc bloc) => bloc.state.user);
+    final user = context.select((AuthBloc bloc) => bloc.state.user);
 
     return Scaffold(
       backgroundColor: Color(0xFFBFBFBF),
@@ -66,7 +66,7 @@ class LogoutButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.read<AppBloc>().add(const AppLogoutPressed());
+        context.read<AuthBloc>().add(const AuthLogoutPressed());
       },
       child: Container(
         height: 80,
