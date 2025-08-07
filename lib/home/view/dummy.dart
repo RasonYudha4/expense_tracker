@@ -33,14 +33,30 @@ class Dummy extends StatelessWidget {
               ),
             ),
             Positioned(
+              top: 40,
+              left: 20,
+              child: Image.asset(
+                'assets/Logo.png',
+                scale: 3,
+              ),
+            ),
+            Positioned(
+                top: 100,
+                left: 20,
+                child: Text(
+                  "Welcome Back, User",
+                  style: TextStyle(
+                      color: Color(0xFFF1F1F1), fontWeight: FontWeight.w600),
+                )),
+            Positioned(
               top: 150,
               left: 0,
               right: 0,
               child: Container(
                 height: 200,
-                width: 350,
+                width: 370,
                 margin: EdgeInsets.symmetric(
-                    horizontal: (MediaQuery.of(context).size.width - 350) / 2),
+                    horizontal: (MediaQuery.of(context).size.width - 370) / 2),
                 decoration: BoxDecoration(
                     color: Color(0xFFF1F1F1),
                     borderRadius: BorderRadius.circular(30)),
@@ -68,7 +84,7 @@ class Dummy extends StatelessWidget {
                       height: 16,
                     ),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Column(
                           children: [
@@ -95,9 +111,6 @@ class Dummy extends StatelessWidget {
                                   fontWeight: FontWeight.bold),
                             )
                           ],
-                        ),
-                        SizedBox(
-                          width: 15,
                         ),
                         Column(
                           children: [
@@ -135,6 +148,7 @@ class Dummy extends StatelessWidget {
                 top: 380,
                 left: 0,
                 right: 0,
+                bottom: 0,
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Column(
@@ -159,274 +173,355 @@ class Dummy extends StatelessWidget {
                       SizedBox(
                         height: 20,
                       ),
-                      Column(
-                        children: [
-                          Container(
-                            height: 80,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                color: Color(0xFFF1F1F1),
-                                borderRadius: BorderRadius.circular(20)),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 14, vertical: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "New PC",
-                                  style: TextStyle(
-                                    color: Color(0xFF7886C7),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                  ),
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
+                      Expanded(
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              Container(
+                                height: 80,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                    color: Color(0xFFF1F1F1),
+                                    borderRadius: BorderRadius.circular(20)),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 14, vertical: 10),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "14 December 2026",
+                                      "New PC",
                                       style: TextStyle(
                                         color: Color(0xFF7886C7),
                                         fontSize: 16,
-                                        fontWeight: FontWeight.w500,
+                                        fontWeight: FontWeight.w600,
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 15,
-                                    ),
-                                    Row(
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
                                       children: [
                                         Text(
-                                          "2.300.000",
-                                          style: TextStyle(
-                                            color: Color(0xFF2D336B),
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        Text(
-                                          " / ",
+                                          "14 December 2026",
                                           style: TextStyle(
                                             color: Color(0xFF7886C7),
-                                            fontSize: 14,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500,
                                           ),
                                         ),
-                                        Text(
-                                          "6.000.000",
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                          ),
+                                        SizedBox(
+                                          height: 15,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "2.300.000",
+                                              style: TextStyle(
+                                                color: Color(0xFF2D336B),
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Text(
+                                              " / ",
+                                              style: TextStyle(
+                                                color: Color(0xFF7886C7),
+                                                fontSize: 14,
+                                              ),
+                                            ),
+                                            Text(
+                                              "6.000.000",
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                              ),
+                                            )
+                                          ],
                                         )
                                       ],
                                     )
                                   ],
-                                )
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Container(
-                            height: 80,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                color: Color(0xFFF1F1F1),
-                                borderRadius: BorderRadius.circular(20)),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 14, vertical: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "New PC",
-                                  style: TextStyle(
-                                    color: Color(0xFF7886C7),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                  ),
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Container(
+                                height: 80,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                    color: Color(0xFFF1F1F1),
+                                    borderRadius: BorderRadius.circular(20)),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 14, vertical: 10),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "14 December 2026",
+                                      "New PC",
                                       style: TextStyle(
                                         color: Color(0xFF7886C7),
                                         fontSize: 16,
-                                        fontWeight: FontWeight.w500,
+                                        fontWeight: FontWeight.w600,
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 15,
-                                    ),
-                                    Row(
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
                                       children: [
                                         Text(
-                                          "2.300.000",
-                                          style: TextStyle(
-                                            color: Color(0xFF2D336B),
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        Text(
-                                          " / ",
+                                          "14 December 2026",
                                           style: TextStyle(
                                             color: Color(0xFF7886C7),
-                                            fontSize: 14,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500,
                                           ),
                                         ),
-                                        Text(
-                                          "6.000.000",
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                          ),
+                                        SizedBox(
+                                          height: 15,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "2.300.000",
+                                              style: TextStyle(
+                                                color: Color(0xFF2D336B),
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Text(
+                                              " / ",
+                                              style: TextStyle(
+                                                color: Color(0xFF7886C7),
+                                                fontSize: 14,
+                                              ),
+                                            ),
+                                            Text(
+                                              "6.000.000",
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                              ),
+                                            )
+                                          ],
                                         )
                                       ],
                                     )
                                   ],
-                                )
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Container(
-                            height: 80,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                color: Color(0xFFF1F1F1),
-                                borderRadius: BorderRadius.circular(20)),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 14, vertical: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "New PC",
-                                  style: TextStyle(
-                                    color: Color(0xFF7886C7),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                  ),
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Container(
+                                height: 80,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                    color: Color(0xFFF1F1F1),
+                                    borderRadius: BorderRadius.circular(20)),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 14, vertical: 10),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "14 December 2026",
+                                      "New PC",
                                       style: TextStyle(
                                         color: Color(0xFF7886C7),
                                         fontSize: 16,
-                                        fontWeight: FontWeight.w500,
+                                        fontWeight: FontWeight.w600,
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 15,
-                                    ),
-                                    Row(
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
                                       children: [
                                         Text(
-                                          "2.300.000",
-                                          style: TextStyle(
-                                            color: Color(0xFF2D336B),
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        Text(
-                                          " / ",
+                                          "14 December 2026",
                                           style: TextStyle(
                                             color: Color(0xFF7886C7),
-                                            fontSize: 14,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500,
                                           ),
                                         ),
-                                        Text(
-                                          "6.000.000",
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                          ),
+                                        SizedBox(
+                                          height: 15,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "2.300.000",
+                                              style: TextStyle(
+                                                color: Color(0xFF2D336B),
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Text(
+                                              " / ",
+                                              style: TextStyle(
+                                                color: Color(0xFF7886C7),
+                                                fontSize: 14,
+                                              ),
+                                            ),
+                                            Text(
+                                              "6.000.000",
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                              ),
+                                            )
+                                          ],
                                         )
                                       ],
                                     )
                                   ],
-                                )
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Container(
-                            height: 80,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                                color: Color(0xFFF1F1F1),
-                                borderRadius: BorderRadius.circular(20)),
-                            padding: EdgeInsets.symmetric(
-                                horizontal: 14, vertical: 10),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "New PC",
-                                  style: TextStyle(
-                                    color: Color(0xFF7886C7),
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w600,
-                                  ),
                                 ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Container(
+                                height: 80,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                    color: Color(0xFFF1F1F1),
+                                    borderRadius: BorderRadius.circular(20)),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 14, vertical: 10),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      "14 December 2026",
+                                      "PP",
                                       style: TextStyle(
                                         color: Color(0xFF7886C7),
                                         fontSize: 16,
-                                        fontWeight: FontWeight.w500,
+                                        fontWeight: FontWeight.w600,
                                       ),
                                     ),
-                                    SizedBox(
-                                      height: 15,
-                                    ),
-                                    Row(
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
                                       children: [
                                         Text(
-                                          "2.300.000",
-                                          style: TextStyle(
-                                            color: Color(0xFF2D336B),
-                                            fontSize: 14,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                        Text(
-                                          " / ",
+                                          "14 December 2026",
                                           style: TextStyle(
                                             color: Color(0xFF7886C7),
-                                            fontSize: 14,
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500,
                                           ),
                                         ),
-                                        Text(
-                                          "6.000.000",
-                                          style: TextStyle(
-                                            fontSize: 14,
-                                          ),
+                                        SizedBox(
+                                          height: 15,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "2.300.000",
+                                              style: TextStyle(
+                                                color: Color(0xFF2D336B),
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Text(
+                                              " / ",
+                                              style: TextStyle(
+                                                color: Color(0xFF7886C7),
+                                                fontSize: 14,
+                                              ),
+                                            ),
+                                            Text(
+                                              "6.000.000",
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                              ),
+                                            )
+                                          ],
                                         )
                                       ],
                                     )
                                   ],
-                                )
-                              ],
-                            ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 15,
+                              ),
+                              Container(
+                                height: 80,
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                    color: Color(0xFFF1F1F1),
+                                    borderRadius: BorderRadius.circular(20)),
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 14, vertical: 10),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "PP",
+                                      style: TextStyle(
+                                        color: Color(0xFF7886C7),
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.end,
+                                      children: [
+                                        Text(
+                                          "14 December 2026",
+                                          style: TextStyle(
+                                            color: Color(0xFF7886C7),
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          height: 15,
+                                        ),
+                                        Row(
+                                          children: [
+                                            Text(
+                                              "2.300.000",
+                                              style: TextStyle(
+                                                color: Color(0xFF2D336B),
+                                                fontSize: 14,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                            ),
+                                            Text(
+                                              " / ",
+                                              style: TextStyle(
+                                                color: Color(0xFF7886C7),
+                                                fontSize: 14,
+                                              ),
+                                            ),
+                                            Text(
+                                              "6.000.000",
+                                              style: TextStyle(
+                                                fontSize: 14,
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ],
                           ),
-                        ],
+                        ),
                       )
                     ],
                   ),

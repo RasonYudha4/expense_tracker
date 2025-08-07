@@ -1,61 +1,157 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../config/size_config.dart';
 import '../../../data/enums/navbar_items.dart';
 import '../cubit/navigation_cubit.dart';
-import 'navigation_button.dart';
 
 class CustomNavBar extends StatelessWidget {
   const CustomNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final double navBarHeight = SizeConfig.height(8.5);
-    final double safeNavBarHeight = navBarHeight.clamp(100.0, 120.0);
-
     return BlocBuilder<NavigationCubit, NavigationState>(
       builder: (context, state) {
-        return Container(
-          height: safeNavBarHeight,
-          width: double.infinity,
-          decoration: BoxDecoration(color: Color(0xFFD3E671)),
+        return SizedBox(
+          height: 100,
           child: Stack(
+            clipBehavior: Clip.none,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  NavButton(
-                    icon: Icons.home_outlined,
-                    label: 'Home',
-                    isSelected: state.navbarItem == NavbarItem.home,
-                    navItem: NavbarItem.home,
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  height: 100,
+                  decoration: BoxDecoration(color: Color(0xFFE0E0E0)),
+                ),
+              ),
+              Positioned(
+                bottom: 20,
+                left: (MediaQuery.of(context).size.width - 370) / 2,
+                child: Container(
+                  height: 70,
+                  width: 370,
+                  decoration: BoxDecoration(
+                    color: Color(0xFFCFCFCF),
+                    borderRadius: BorderRadius.circular(40),
                   ),
-                  NavButton(
-                    icon: Icons.bar_chart_rounded,
-                    label: 'Evaluation',
-                    isSelected: state.navbarItem == NavbarItem.evaluation,
-                    navItem: NavbarItem.evaluation,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 14),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            // Home Button
+                            InkWell(
+                              onTap: () {
+                                BlocProvider.of<NavigationCubit>(context)
+                                    .getNavBarItem(NavbarItem.home);
+                              },
+                              borderRadius: BorderRadius.circular(30),
+                              child: Container(
+                                width: 60,
+                                height: 60,
+                                child: Icon(
+                                  Icons.home_filled,
+                                  size: 28,
+                                  color: state.navbarItem == NavbarItem.home
+                                      ? Color(0xFF2D336B)
+                                      : Colors.grey,
+                                ),
+                              ),
+                            ),
+                            // Evaluation Button
+                            InkWell(
+                              onTap: () {
+                                BlocProvider.of<NavigationCubit>(context)
+                                    .getNavBarItem(NavbarItem.evaluation);
+                              },
+                              borderRadius: BorderRadius.circular(30),
+                              child: Container(
+                                width: 60,
+                                height: 60,
+                                child: Icon(
+                                  Icons.bar_chart_rounded,
+                                  size: 28,
+                                  color:
+                                      state.navbarItem == NavbarItem.evaluation
+                                          ? Color(0xFF2D336B)
+                                          : Colors.grey,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            InkWell(
+                              onTap: () {
+                                BlocProvider.of<NavigationCubit>(context)
+                                    .getNavBarItem(NavbarItem.history);
+                              },
+                              borderRadius: BorderRadius.circular(30),
+                              child: Container(
+                                width: 60,
+                                height: 60,
+                                child: Icon(
+                                  Icons.event_note_rounded,
+                                  size: 28,
+                                  color: state.navbarItem == NavbarItem.history
+                                      ? Color(0xFF2D336B)
+                                      : Colors.grey,
+                                ),
+                              ),
+                            ),
+                            InkWell(
+                              onTap: () {
+                                BlocProvider.of<NavigationCubit>(context)
+                                    .getNavBarItem(NavbarItem.profile);
+                              },
+                              borderRadius: BorderRadius.circular(30),
+                              child: Container(
+                                width: 60,
+                                height: 60,
+                                child: Icon(
+                                  Icons.person,
+                                  size: 28,
+                                  color: state.navbarItem == NavbarItem.profile
+                                      ? Color(0xFF2D336B)
+                                      : Colors.grey,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
-                  NavButton(
-                    icon: Icons.camera_alt,
-                    label: 'Insert',
-                    isSelected: state.navbarItem == NavbarItem.insert,
-                    navItem: NavbarItem.insert,
+                ),
+              ),
+              Positioned(
+                left: (MediaQuery.of(context).size.width - 90) / 2,
+                child: InkWell(
+                  onTap: () {
+                    BlocProvider.of<NavigationCubit>(context)
+                        .getNavBarItem(NavbarItem.insert);
+                  },
+                  borderRadius: BorderRadius.circular(45),
+                  child: Container(
+                    height: 90,
+                    width: 90,
+                    decoration: BoxDecoration(
+                      color: state.navbarItem == NavbarItem.insert
+                          ? Color(0xFF89AC46)
+                          : Color(0xFF2D336B),
+                      borderRadius: BorderRadius.circular(90),
+                    ),
+                    child: Icon(
+                      Icons.camera_alt,
+                      color: Color(0xFFF1F1F1),
+                      size: 35,
+                    ),
                   ),
-                  NavButton(
-                    icon: Icons.history,
-                    label: 'History',
-                    isSelected: state.navbarItem == NavbarItem.history,
-                    navItem: NavbarItem.history,
-                  ),
-                  NavButton(
-                    icon: Icons.person,
-                    label: 'Profile',
-                    isSelected: state.navbarItem == NavbarItem.profile,
-                    navItem: NavbarItem.profile,
-                  ),
-                ],
+                ),
               ),
             ],
           ),
