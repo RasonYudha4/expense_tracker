@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:expense_tracker/sign_up/sign_up.dart';
+import 'package:expense_tracker/app/routes/pages/sign_up/sign_up.dart';
 
-import '../../data/repositories/auth_repo.dart';
+import '../../../../../data/repositories/auth_repo.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});

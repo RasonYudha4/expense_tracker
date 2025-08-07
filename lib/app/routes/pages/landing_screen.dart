@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../data/enums/navbar_items.dart';
-import '../../../evaluation/blocs/bloc/selected_bloc.dart';
-import '../../../evaluation/view/evaluation.dart';
-import '../../../home/view/dummy.dart';
-import '../../../home/view/home_page.dart';
+import 'evaluation/blocs/bloc/selected_bloc.dart';
+import 'evaluation/view/evaluation_page.dart';
+import 'history/view/history_page.dart';
+import 'home/view/dummy.dart';
+import 'home/view/home_page.dart';
 import '../cubit/navigation_cubit.dart';
 import '../widgets/navigation_bar.dart';
 
@@ -33,7 +34,7 @@ class _LandingScreenState extends State<LandingScreen> {
           } else if (state.navbarItem == NavbarItem.insert) {
             return HomePage();
           } else if (state.navbarItem == NavbarItem.history) {
-            return HomePage();
+            return HistoryPage();
           } else if (state.navbarItem == NavbarItem.profile) {
             return HomePage();
           }

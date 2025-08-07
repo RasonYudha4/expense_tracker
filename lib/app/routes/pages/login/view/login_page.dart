@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:expense_tracker/login/login.dart';
+import 'package:expense_tracker/app/routes/pages/login/login.dart';
 
-import '../../data/repositories/auth_repo.dart';
+import '../../../../../data/repositories/auth_repo.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});

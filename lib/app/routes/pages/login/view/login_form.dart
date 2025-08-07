@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:expense_tracker/login/login.dart';
-import 'package:expense_tracker/sign_up/sign_up.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:expense_tracker/app/routes/pages/login/login.dart';
+import 'package:expense_tracker/app/routes/pages/sign_up/sign_up.dart';
 import 'package:formz/formz.dart';
 
-import '../../data/form_inputs/auth/email.dart';
-import '../../data/form_inputs/auth/password.dart';
+import '../../../../../data/form_inputs/auth/email.dart';
+import '../../../../../data/form_inputs/auth/password.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});

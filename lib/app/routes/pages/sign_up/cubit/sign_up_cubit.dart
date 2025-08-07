@@ -2,10 +2,10 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 
-import '../../data/form_inputs/auth/confirm_password.dart';
-import '../../data/form_inputs/auth/email.dart';
-import '../../data/form_inputs/auth/password.dart';
-import '../../data/repositories/auth_repo.dart';
+import '../../../../../data/form_inputs/auth/confirm_password.dart';
+import '../../../../../data/form_inputs/auth/email.dart';
+import '../../../../../data/form_inputs/auth/password.dart';
+import '../../../../../data/repositories/auth_repo.dart';
 
 part 'sign_up_state.dart';
 

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:expense_tracker/sign_up/sign_up.dart';
+import 'package:expense_tracker/app/routes/pages/sign_up/sign_up.dart';
 import 'package:formz/formz.dart';
 
-import '../../data/form_inputs/auth/confirm_password.dart';
-import '../../data/form_inputs/auth/email.dart';
-import '../../data/form_inputs/auth/password.dart';
+import '../../../../../data/form_inputs/auth/confirm_password.dart';
+import '../../../../../data/form_inputs/auth/email.dart';
+import '../../../../../data/form_inputs/auth/password.dart';
 import '../../login/view/login_page.dart';
 
 class SignUpForm extends StatelessWidget {

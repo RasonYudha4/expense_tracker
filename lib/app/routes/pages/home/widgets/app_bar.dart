@@ -1,9 +1,9 @@
-import 'package:expense_tracker/home/view/profile_page.dart';
-import 'package:expense_tracker/home/widgets/avatar.dart';
+import 'package:expense_tracker/app/routes/pages/home/view/profile_page.dart';
+import 'package:expense_tracker/app/routes/pages/home/widgets/avatar.dart';
 import 'package:expense_tracker/notifications/view/notification.dart';
 import 'package:flutter/material.dart';
 
-import '../../data/models/user.dart';
+import '../../../../../data/models/user.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({
