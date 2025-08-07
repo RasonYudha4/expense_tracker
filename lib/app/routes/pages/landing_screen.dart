@@ -3,8 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../data/enums/navbar_items.dart';
 import 'evaluation/blocs/bloc/selected_bloc.dart';
-import 'evaluation/view/evaluation_page.dart';
-import 'history/view/history_page.dart';
+import 'evaluation/views/evaluation.dart';
+import 'evaluation/views/evaluation_page.dart';
+import 'history/views/history_page.dart';
 import 'home/view/dummy.dart';
 import 'home/view/home_page.dart';
 import '../cubit/navigation_cubit.dart';
@@ -27,16 +28,16 @@ class _LandingScreenState extends State<LandingScreen> {
           if (state.navbarItem == NavbarItem.home) {
             return Dummy();
           } else if (state.navbarItem == NavbarItem.evaluation) {
-            return BlocProvider<SelectedBloc>(
-              create: (context) => SelectedBloc(),
-              child: EvaluationPage(),
-            );
+            return EvaluationPage();
           } else if (state.navbarItem == NavbarItem.insert) {
             return HomePage();
           } else if (state.navbarItem == NavbarItem.history) {
             return HistoryPage();
           } else if (state.navbarItem == NavbarItem.profile) {
-            return HomePage();
+            return BlocProvider<SelectedBloc>(
+              create: (context) => SelectedBloc(),
+              child: Evaluation(),
+            );
           }
           return Container();
         },

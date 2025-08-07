@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class EvaluationPage extends StatelessWidget {
-  const EvaluationPage({super.key});
+class Evaluation extends StatelessWidget {
+  const Evaluation({super.key});
 
   @override
   Widget build(BuildContext context) {
