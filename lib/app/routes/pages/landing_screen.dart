@@ -10,6 +10,7 @@ import 'home/view/dummy.dart';
 import 'home/view/home_page.dart';
 import '../cubit/navigation_cubit.dart';
 import '../widgets/navigation_bar.dart';
+import 'profile/views/profile_page.dart';
 
 class LandingScreen extends StatefulWidget {
   const LandingScreen({super.key});
@@ -34,10 +35,11 @@ class _LandingScreenState extends State<LandingScreen> {
           } else if (state.navbarItem == NavbarItem.history) {
             return HistoryPage();
           } else if (state.navbarItem == NavbarItem.profile) {
-            return BlocProvider<SelectedBloc>(
-              create: (context) => SelectedBloc(),
-              child: Evaluation(),
-            );
+            // return BlocProvider<SelectedBloc>(
+            //   create: (context) => SelectedBloc(),
+            //   child: Evaluation(),
+            // );
+            return ProfilePage();
           }
           return Container();
         },
