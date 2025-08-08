@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/monthly_chart.dart';
+import '../widgets/three_months_chart.dart';
+import '../widgets/weekly_chart.dart';
 import 'add_earning_page.dart';
 
 class HistoryPage extends StatelessWidget {
@@ -34,7 +37,7 @@ class HistoryPage extends StatelessWidget {
                   children: [
                     Container(
                       width: double.infinity,
-                      height: 250,
+                      height: 280,
                       decoration: BoxDecoration(
                           color: Color(0xFFF1F1F1),
                           borderRadius: BorderRadius.circular(20)),
@@ -51,7 +54,7 @@ class HistoryPage extends StatelessWidget {
                             ),
                             SizedBox(height: 15),
                             Expanded(
-                              child: Container(),
+                              child: ThreeMonthsChart(),
                             ),
                           ],
                         ),
