@@ -10,6 +10,7 @@ import 'home/view/dummy.dart';
 import 'home/view/home_page.dart';
 import '../cubit/navigation_cubit.dart';
 import '../widgets/navigation_bar.dart';
+import 'insert/widgets/image_picker.dart';
 import 'profile/views/profile_page.dart';
 
 class LandingScreen extends StatefulWidget {
@@ -31,7 +32,7 @@ class _LandingScreenState extends State<LandingScreen> {
           } else if (state.navbarItem == NavbarItem.evaluation) {
             return EvaluationPage();
           } else if (state.navbarItem == NavbarItem.insert) {
-            return HomePage();
+            return ImagePickerWidget();
           } else if (state.navbarItem == NavbarItem.history) {
             return HistoryPage();
           } else if (state.navbarItem == NavbarItem.profile) {
